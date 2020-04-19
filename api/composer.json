@@ -1,0 +1,21 @@
+{
+    "name": "teacottage/teacottage",
+    "type": "project",
+    "description": "Fake tea shop",
+    "require": {
+        "php-di/php-di": "^6.1"
+    },
+    "authors": [
+        {
+            "name": "Hue",
+            "email": "tohuem@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "./config/DbConfig.php",
+            "./database/TeaCottageDb.php",
+            "./controller/TeaController.php"
+        ]
+    }
+}
