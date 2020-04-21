@@ -4,12 +4,11 @@
 
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
-    echo json_encode(array("response" => "yello is the mello"));
-    // if (true) {
-    //     $builder = new DI\ContainerBuilder();
-    //     $container = $builder->build();
-    //     $teaRequest = $container->get("TeaCottage\TeaController"); 
-    // }
+    
+    $builder = new DI\ContainerBuilder();
+    $container = $builder->build();
+    $teaRequest = $container->get("TeaCottage\TeaController"); 
+    echo $teaRequest->Get();
 
     // class TeaRequest {
     //     function Get() {

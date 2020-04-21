@@ -10,7 +10,8 @@
 
         function __construct(DbConfig $config)
         {
-            $this->conn = new mysqli($config["db"], $config["dbUserName"], $config["password"]);
+            $db = $config->getDbConfig();
+            $this->conn = new mysqli($db["db"], $db["dbUserName"], $db["password"]);
             mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         }
 
@@ -36,7 +37,7 @@
                             "healthBenefits" => $row["HealthBenefits"],
                         );
 
-                        array_push($item);
+                        array_push($tea, $item);
                     }
 
                     return $tea;
