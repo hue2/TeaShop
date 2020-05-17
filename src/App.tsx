@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import './Common.scss';
 import { render } from '@testing-library/react';
 import Nav from './views/layout/Nav';

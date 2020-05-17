@@ -6,6 +6,10 @@ div {
     color: $icon-color;
 }
 
+.nav {
+    background-color: white;
+}
+
 .nav-li {
     display: inline;
     padding: 20px;
@@ -58,6 +62,8 @@ div {
 }
 
 .options {
+    padding-bottom: 5px;
+    
     ul {
         list-style-type: none;
     }

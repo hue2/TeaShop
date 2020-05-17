@@ -1,4 +1,5 @@
 $icon-color: #3b3b3b;
+$background-color: #FCF9F4;
 
 .flex {
     display: flex;
@@ -21,4 +22,15 @@ $icon-color: #3b3b3b;
     border: 1px solid;
     border-radius: 5px;
     box-shadow: 1px 1px 2px $icon-color;
+}
+
+.home-content {
+    background: $background-color;
+    display: flex;
+    @extend .left;
+    padding: 1vw;
+}
+
+.left {
+    align-items: left;
 }
