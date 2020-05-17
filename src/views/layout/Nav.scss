@@ -1,0 +1,73 @@
+$icon-color: #3b3b3b;
+$nav-color: #FCF9F4;
+$bold: 500;
+
+div {
+    color: $icon-color;
+}
+
+.nav-li {
+    display: inline;
+    padding: 20px;
+    font-weight: 400;
+}
+
+.nav-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-right: 5vw;
+    font-size: 13px;
+} 
+
+.logo {
+    width: 3vw;
+    padding: 5px;   
+}
+
+.nav-icon {
+    color: $icon-color;
+}
+
+.nav-panel {
+    background-color: $nav-color;
+}
+
+.search {
+    border: none;
+    background: none;
+    padding: 5px;
+    margin-left: 1vw;
+    margin-top: 1vh;
+    &:focus {
+        outline: none;
+    }
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 1vw;
+    
+    h2 { 
+        color: $icon-color;
+        font-weight: $bold;
+    }
+}
+
+.options {
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        @extend .nav-li;
+        font-weight: $bold;
+    }
+
+    .sale {
+        color: red;
+    }
+}
