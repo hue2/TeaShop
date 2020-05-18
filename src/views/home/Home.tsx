@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import "./Home.scss";
 const teatime = require('../../assets/img/teatime.png');
 

@@ -21,6 +21,7 @@
     "react-scripts": "3.4.1",
     "react-scroll": "^1.7.16",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "typescript": "^3.9.2"
   },
   "scripts": {
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-redux": "^7.1.8",
     "dotenv": "^8.2.0",
     "redux-devtools": "^3.5.0"
   }
