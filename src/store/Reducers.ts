@@ -18,13 +18,13 @@ export function baseReducer(state : ProductInitialState = initialState, action: 
             return {
                 ...state,
                 pending: false,
-                products: action.payload
+                products: action.products
             }
         case FETCH_ERROR:
             return {
                 ...state,
                 pending: false,
-                error: action.console.error
+                error: action.error
             }
         default: 
             return state;

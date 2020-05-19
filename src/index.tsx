@@ -8,7 +8,8 @@ import * as serviceWorker from './serviceWorker';
 import { baseReducer } from './store/Reducers';
 import { Provider } from 'react-redux';
 
-const store = createStore(baseReducer, applyMiddleware(thunk));
+const middlewares = [thunk];
+const store = createStore(baseReducer, applyMiddleware(...middlewares));
 
 ReactDOM.render(
   <React.StrictMode>

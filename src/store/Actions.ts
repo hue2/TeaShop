@@ -1,3 +1,5 @@
+import { TeaProduct } from './Types';
+
 export const FETCH_PENDING = "GET";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_ERROR = "FETCH_ERROR";
@@ -8,7 +10,7 @@ export function fetchPending() {
     }
 }
 
-export function fetchSuccess(products : Array<any>) {
+export function fetchSuccess(products : Array<TeaProduct>) {
     return {
         type: FETCH_SUCCESS,
         products: products

@@ -28,9 +28,38 @@ $background-color: #FCF9F4;
     background: $background-color;
     display: flex;
     @extend .left;
+    @extend .margin-left-5;
     padding: 1vw;
 }
 
 .left {
     align-items: left;
+}
+
+.product {
+    width: 10vw;
+}
+
+.product-container {
+    padding: 2vw;
+    @extend .margin-left-5;
+}
+
+.margin-left-5 {
+    margin-left: 5vw;
+}
+
+.feature-container {
+    @extend .flex;
+    flex-wrap: wrap;
+
+    p {
+        font-weight: 500;
+    }
+}
+
+.line {
+    margin-left: 6vw;
+    margin-right: 6vw;
+    opacity: 0.6;
 }
