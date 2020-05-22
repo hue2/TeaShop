@@ -14,6 +14,8 @@
     "@types/node": "^14.0.1",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "fetch-mock": "^9.9.1",
+    "node-fetch": "^2.6.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -21,6 +23,7 @@
     "react-scripts": "3.4.1",
     "react-scroll": "^1.7.16",
     "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
     "typescript": "^3.9.2"
   },
@@ -48,6 +51,8 @@
   "devDependencies": {
     "@types/react-redux": "^7.1.8",
     "dotenv": "^8.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "redux-devtools": "^3.5.0"
   }
 }
