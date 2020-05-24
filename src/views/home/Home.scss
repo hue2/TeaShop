@@ -1,12 +1,13 @@
 $icon-color: #3b3b3b;
 $background-color: #FCF9F4;
+$dark-green: #606A38;
 
 .flex {
     display: flex;
 }
 
 .cover {
-    width: 100vw;
+    width: 99vw;
 }
 
 .cover-container {
@@ -62,4 +63,44 @@ $background-color: #FCF9F4;
     margin-left: 6vw;
     margin-right: 6vw;
     opacity: 0.6;
+}
+
+.width-50 {
+    width: 50vw;
+}
+
+.text-left {
+    float: left;
+    text-align: left;
+}
+
+.width-15 {
+    width: 15vw;
+}
+
+button {
+    cursor: pointer;
+}
+
+.dark-green {
+    color: $dark-green;
+}
+
+.more-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 8vw;
+    padding-bottom: 2vh;
+
+    a {
+        width: 3vw;
+        border: 1px solid #8e959b;
+        border-radius: 3px;
+        box-shadow: 1px 1px 1px #d6dbe5;
+        padding: 5px 2px 5px 2px;
+        color: black;
+        text-decoration: none;
+        background: white;
+        font-size: 10pt;
+    }
 }

@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import './Common.scss';
-import { render } from '@testing-library/react';
 import Nav from './views/layout/Nav';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import Home from './views/home/Home';
+import Product from './views/product/Product';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { faCheckSquare, faCoffee, faHome, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
 library.add(fab, faCheckSquare, faCoffee, faHome, faShoppingCart, faSearch);
 
@@ -21,10 +21,12 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <Nav />
-        <Home />
-      </div>
+      <Router>
+        <div className="App">
+          <Nav />
+        </div>
+      </Router>
+
     );
   }
 }

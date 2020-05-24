@@ -7,8 +7,9 @@
     
     $builder = new DI\ContainerBuilder();
     $container = $builder->build();
+    $productId = $_GET["id"];
     $teaRequest = $container->get("TeaCottage\TeaController"); 
-    echo $teaRequest->Get();
+    echo $teaRequest->Get($productId);
 
     // class TeaRequest {
     //     function Get() {

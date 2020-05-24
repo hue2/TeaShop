@@ -19,10 +19,10 @@
 
         }
 
-        function Get() {
+        function Get($id = null) {
             $tea = array();
 
-            $sql = "SELECT * from todo.teacottage";
+            $sql = $id == null ? "SELECT * from todo.teacottage" : "SELECT * from todo.teacottage WHERE Id = $id";
             if ($result = $this->conn->query($sql)) {
                 $allRows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
