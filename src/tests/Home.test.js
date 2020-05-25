@@ -9,27 +9,6 @@ import { get } from '../services/ApiHandler';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-function setup() {
-    const props = {
-        get: jest.fn()
-    };
-
-    const initialState = {
-        pending: false,
-        products: [],
-        error: null
-    }
-
-    const mockStore = configureStore()
-    const store = mockStore(initialState)
-    const enzymeWrapper = shallow(<Home store={store} {...props} /> )  
-
-    return {
-        props,
-        enzymeWrapper
-    }
-}
-
 describe('components', () => {
     let props, store, mockStore, initialState;
     const middlewares = [thunk];
@@ -46,7 +25,6 @@ describe('components', () => {
 
         mockStore = configureStore(middlewares);
         store = mockStore(initialState);
-        // const enzymeWrapper = shallow(<Home store={store} {...props} /> )  
 
     });
     it('should call componentDidMount', () => {

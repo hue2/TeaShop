@@ -10,5 +10,11 @@ export interface TeaProduct {
     id: number,
     imageUrl: string,
     name: string,
+    price: Array<QuantityPrice>,
+}
+
+export interface QuantityPrice {
+    priceId: number,
+    quantity: string,
     price: number,
 }

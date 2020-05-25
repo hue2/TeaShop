@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getProductsError, getProducts, getProductsPending } from '../../store/Reducers';
 import { NavLink } from 'react-router-dom';
 import { ProductInitialState } from '../../store/Types';
-import { get } from '../../services/ApiHandler';
+import { get, getFeature } from '../../services/ApiHandler';
 import "./Home.scss";
 import { bindActionCreators } from 'redux';
 
@@ -13,14 +13,13 @@ type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchT
 
 class Home extends React.Component<Props> {
     componentDidMount() {
-        const { get } = this.props;
-        get();
+        const { getFeature } = this.props;
+        getFeature();
     }
 
     render() {
         const { products } = this.props;
-        let randomItem = Math.floor(Math.random() * 5);
-
+        let randomItem = Math.floor(Math.random() * 3);
         return (
             <>
                 <div>
@@ -33,7 +32,7 @@ class Home extends React.Component<Props> {
                     </div>
                     <hr className="line" />
                     <div className="feature-container">
-                        {products && products.length > 0 && products.slice(1, 5).map(item => 
+                        {products && products.length > 0 && products.map(item => 
                             <div className="product-container" key={`${item.id}`}>
                                 <img className="product" src={item.imageUrl} />
                                 <p>{item.name}</p>
@@ -77,7 +76,7 @@ const mapStateToProps = (state : ProductInitialState) => ({
 });
 
 const mapDispatchToProps = (dispatch : any) => bindActionCreators({
-    get: get 
+    getFeature: getFeature
 }, dispatch);
 
 export default connect(
