@@ -14,20 +14,22 @@ describe('async actions', () => {
     });
 
     it('creates FETCH_SUCCESS when fetching has been done', () => {
-        fetchMock.getOnce(apiUrl, {
+        const url = `${apiUrl}/get.php`;
+        fetchMock.getOnce(url, {
             headers: { 'content-type': 'application/json' },
-            body: { products: [1, 2, 3] }
-        });
+            body: { products: [1, 2, 3] },
+        })
 
         const expectedActions = [
             { type: actions.FETCH_PENDING },
             { type: actions.FETCH_SUCCESS,  products: { products: [1, 2, 3] }  }
         ]
 
-        const store = mockStore();
+        const store = mockStore({ products: [] });
 
         return store.dispatch(service.get()).then(() => {
-            expect(store.getActions()).toEqual(expectedActions);
+             expect(fetchMock.lastUrl()).toEqual(url)
+             expect(store.getActions()).toEqual(expectedActions);
         })
     })
 })

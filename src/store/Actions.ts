@@ -1,9 +1,10 @@
-import { TeaProduct } from './Types';
+import { TeaProduct, QuantityPrice } from './Types';
 
 export const FETCH_PENDING = "GET";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_ERROR = "FETCH_ERROR";
 export const FETCH_ONE_SUCCESS = "FETCH_ONE_SUCCESS";
+export const SET_SELECTED = "SET_SELECTED";
 
 export function fetchPending() {
     return {

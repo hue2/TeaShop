@@ -58,9 +58,9 @@ class Home extends React.Component<Props> {
                             </div>                  
                         </div>
                         <div className="more-btn">
-                            <NavLink to={`/product/${products[randomItem].id}`} activeClassName="selected">
+                            <a href={`/product/${products[randomItem].id}`}>
                                 More
-                            </NavLink>
+                            </a>
                         </div>
                     </div>
                 }

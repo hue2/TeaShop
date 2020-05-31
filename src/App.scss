@@ -1,8 +1,11 @@
 $background-color: #FCF9F4;
 
+body {
+  background: $background-color;
+}
+
 .App {
   text-align: center;
-  background: $background-color;
 }
 
 .App-logo {

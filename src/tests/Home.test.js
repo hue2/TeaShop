@@ -27,6 +27,7 @@ describe('components', () => {
         store = mockStore(initialState);
 
     });
+
     it('should call componentDidMount', () => {
         let spy = jest.spyOn(Home.WrappedComponent.prototype, 'componentDidMount');
         const wrapper = mount(
@@ -37,5 +38,5 @@ describe('components', () => {
         expect(spy).toHaveBeenCalled();
         wrapper.unmount();
     });
-    
+
 });

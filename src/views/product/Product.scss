@@ -1,1 +1,11 @@
 @import '../home/Home.scss';
+@import '../../Common.scss';
+
+.amt-selector {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.qty-selector {
+    @extend .amt-selector;
+}

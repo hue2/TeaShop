@@ -5,11 +5,14 @@ import { getOne } from '../../services/ApiHandler';
 import { RouteProps } from './ProductTypes';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { ProductState } from './Types';
+import './Product.scss';
 
-type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & RouteProps;
+type ProductProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & RouteProps;
 
-class Product extends React.Component<Props> {
+export class Product extends React.Component<ProductProps, ProductState> {
     componentDidMount() {
+        console.log("product is called")
         const { getOne } = this.props;
         getOne(this.props.match.params.id);
     }
@@ -17,6 +20,7 @@ class Product extends React.Component<Props> {
     render() {
         const { products } = this.props;
         const selectedProduct = products[0];
+        console.log(selectedProduct);
         return (
             <div>
                 {selectedProduct && (
@@ -28,19 +32,37 @@ class Product extends React.Component<Props> {
                             <p className="text-left dark-green">{selectedProduct.name}</p>
                             <br/>
                             <p className="text-left">{selectedProduct.description}</p>
+                            <br />
+                            <div className="float-right">
+                            {
+                                <select className="amt-selector">
+                                    {selectedProduct && selectedProduct.price.map(item => (
+                                        <option value={item.priceId} key={item.priceId}>
+                                            {item.quantity}
+                                        </option>
+                                    ))}
+                                </select>             
+                            }
+                            {
+                                <select className="amt-selector">
+                                    <option value="" disabled selected>Quantity</option>
+                                    {[1, 2, 3, 4, 5, 6].map(item => (
+                                        <option value={item} key={item}>
+                                            {item}
+                                        </option>
+                                    ))}
+                                </select>             
+                            }
+                            </div>
+                            <br />
+                            <br />
+                            <div className="float-right">
+                                <p>Total: </p>
+                            </div>
                         </div>                 
                     </div>
                 )}
-                {
-                    <select>
-                        {selectedProduct && selectedProduct.price.map(item => (
-                            <option value={item.priceId} key={item.priceId}>
-                                {item.quantity}
-                            </option>
-
-                        ))}
-                    </select>             
-                }
+               
                 {/* <div className="more-btn">
                     <NavLink to={`/product/${products[randomItem].id}`} activeClassName="selected">
                         More
