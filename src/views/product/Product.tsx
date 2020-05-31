@@ -13,7 +13,6 @@ type ProductProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDi
 
 export class Product extends React.Component<ProductProps, ProductState> {
     componentDidMount() {
-        console.log("product is called")
         const { getOne } = this.props;
         getOne(this.props.match.params.id);
     }
