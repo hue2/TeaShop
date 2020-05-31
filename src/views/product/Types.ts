@@ -2,7 +2,7 @@ import { QuantityPrice } from '../../store/Types';
 
 export interface QuantityProps {
     quantity: Array<QuantityPrice>;
-    handleChange: () => {};
+    onChange: (event: any) => void;
 }
 
 export interface ProductState {

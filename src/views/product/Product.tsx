@@ -6,6 +6,7 @@ import { RouteProps } from './ProductTypes';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ProductState } from './Types';
+import { QuantitySelect } from './QuantitySelect';
 import './Product.scss';
 
 type ProductProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & RouteProps;
@@ -17,10 +18,13 @@ export class Product extends React.Component<ProductProps, ProductState> {
         getOne(this.props.match.params.id);
     }
 
+    handleChange = (event: any) => {
+
+    }
+
     render() {
         const { products } = this.props;
         const selectedProduct = products[0];
-        console.log(selectedProduct);
         return (
             <div>
                 {selectedProduct && (
@@ -33,41 +37,10 @@ export class Product extends React.Component<ProductProps, ProductState> {
                             <br/>
                             <p className="text-left">{selectedProduct.description}</p>
                             <br />
-                            <div className="float-right">
-                            {
-                                <select className="amt-selector">
-                                    {selectedProduct && selectedProduct.price.map(item => (
-                                        <option value={item.priceId} key={item.priceId}>
-                                            {item.quantity}
-                                        </option>
-                                    ))}
-                                </select>             
-                            }
-                            {
-                                <select className="amt-selector">
-                                    <option value="" disabled selected>Quantity</option>
-                                    {[1, 2, 3, 4, 5, 6].map(item => (
-                                        <option value={item} key={item}>
-                                            {item}
-                                        </option>
-                                    ))}
-                                </select>             
-                            }
-                            </div>
-                            <br />
-                            <br />
-                            <div className="float-right">
-                                <p>Total: </p>
-                            </div>
-                        </div>                 
+                            <QuantitySelect quantity={selectedProduct.price} onChange={this.handleChange} />
+                        </div>
                     </div>
                 )}
-               
-                {/* <div className="more-btn">
-                    <NavLink to={`/product/${products[randomItem].id}`} activeClassName="selected">
-                        More
-                    </NavLink>
-                </div> */}
             </div>
         )
     }

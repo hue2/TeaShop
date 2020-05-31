@@ -14,8 +14,8 @@ export const QuantitySelect = (props : QuantityProps) => {
                 </select>             
             }
             {
-                <select className="amt-selector">
-                    <option value="" disabled selected>Quantity</option>
+                <select className="amt-selector" defaultValue={-1}>
+                    <option value={-1} disabled>Quantity</option>
                     {[1, 2, 3, 4, 5, 6].map(item => (
                         <option value={item} key={item}>
                             {item}
