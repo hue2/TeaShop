@@ -4,16 +4,35 @@
 
     use TeaCottage\DbConfig;
     use mysqli;
-use stdClass;
+    use stdClass;
 
 class TeaDatabase {
         private $conn;
 
-        function __construct(DbConfig $config)
+        function __construct()
         {
-            $db = $config->getDbConfig();
-            $this->conn = new mysqli($db["db"], $db["dbUserName"], $db["password"]);
-            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+            $file = "../config/config.ini";
+            $settings = (parse_ini_file($file, TRUE));
+            $dbSettings = $settings["database"];
+            
+            if (!$settings) {
+                throw new \Exception("Unable to open ${file}.");
+            }
+
+            $driver = $dbSettings["driver"];
+            $user = $dbSettings["dbUserName"];
+            $pw = $dbSettings["password"];
+            $host = $dbSettings["host"];
+            $schema = $dbSettings["schema"];
+            $port = $dbSettings["port"];
+            $dsn = "${driver}:host=${host};port=${port};dbname=${schema}";
+            $options = $settings["db_options"] ;
+
+            $this->conn = new \PDO($dsn, $user, $pw, $options);
+
+            // $db = $config->getDbConfig();
+            // $this->conn = new mysqli($db["db"], $db["dbUserName"], $db["password"]);
+            // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         }
 
         function Save() {

@@ -7,18 +7,46 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ProductState } from './Types';
 import { QuantitySelect } from './QuantitySelect';
+import { TeaProduct } from '../../store/Types';
 import './Product.scss';
 
 type ProductProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & RouteProps;
 
 export class Product extends React.Component<ProductProps, ProductState> {
-    componentDidMount() {
-        const { getOne } = this.props;
-        getOne(this.props.match.params.id);
+    state : ProductState = {
+        priceId: 0,
+        qtySelected: 1,
+        price: 0,
+        totalPrice: 0
     }
 
-    handleChange = (event: any) => {
 
+    componentDidMount() {
+        this.props.getOne(this.props.match.params.id).then(() => {
+            const { products } = this.props;
+            if (products.length > 0) {
+                this.setState({ 
+                    priceId : products[0].price[0].priceId, 
+                    price: products[0].price[0].price,
+                    totalPrice: products[0].price[0].price
+                 });
+            }
+        });
+    }
+  
+    handlePriceChange = (priceId: number, price: any) => {
+        let parsedPrice = parseFloat(price);
+        this.setState({ 
+            priceId, 
+            price,
+            totalPrice: isNaN(parsedPrice) ? 0 : +(this.state.qtySelected * price).toFixed(2) });
+    }
+
+    handleQtyChange = (qtySelected: number) => {
+        this.setState({ 
+            qtySelected, 
+            totalPrice: (+this.state.price) * qtySelected 
+        });
     }
 
     render() {
@@ -36,8 +64,18 @@ export class Product extends React.Component<ProductProps, ProductState> {
                             <br/>
                             <p className="text-left">{selectedProduct.description}</p>
                             <br />
-                            <QuantitySelect quantity={selectedProduct.price} onChange={this.handleChange} />
+                            <p className="text-left">{selectedProduct.healthBenefits}</p>
+                            <br />
+                            <QuantitySelect quantity={selectedProduct.price} 
+                                onQtyChange={this.handleQtyChange} 
+                                onPriceChange={this.handlePriceChange}
+                                selectedPrice={this.state.totalPrice}
+                                selectedPriceId={this.state.priceId} 
+                                selectedQuantity={this.state.qtySelected}
+                            />
                         </div>
+                        <br />
+                        {/* <button onClick={}>Add to Cart</button> */}
                     </div>
                 )}
             </div>
@@ -51,9 +89,12 @@ const mapStateToProps = (state : ProductInitialState) => ({
     error: getProductsError(state),
 });
 
-const mapDispatchToProps = (dispatch : any) => bindActionCreators({
-    getOne: getOne 
-}, dispatch);
+const mapDispatchToProps = (dispatch : any) => ({
+    getOne: (id: string) => {
+        return dispatch(getOne(id));
+    }
+});
+
 
 export default connect(
     mapStateToProps,

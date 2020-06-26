@@ -22,7 +22,6 @@ export function getOne(id : string) {
   return (dispatch : any) => {
     dispatch(fetchPending());
       return fetch(`${apiUrl}/get.php?id=${id}`).then((response : any) => response.json()).then((data : Array<TeaProduct>) => {   
-        console.log(data);
        dispatch(fetchSuccess(data));
     })
     .catch((error : any) => {

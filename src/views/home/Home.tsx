@@ -34,15 +34,17 @@ class Home extends React.Component<Props> {
                     <div className="feature-container">
                         {products && products.length > 0 && products.map(item => 
                             <div className="product-container" key={`${item.id}`}>
-                                <img className="product" src={item.imageUrl} />
+                                <a href={`/product/${item.id}`}>
+                                    <img className="product" src={item.imageUrl} />
+                                </a>
                                 <p>{item.name}</p>
                             </div>
                         )}
                         <br />
                     </div>
-                    <div className="more-btn">
+                    {/* <div className="more-btn">
                         <button>More</button>
-                    </div>
+                    </div> */}
                 </div>
                 <hr className="line" />
                 {products[randomItem] && products[randomItem].id &&
